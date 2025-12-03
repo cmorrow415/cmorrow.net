@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{ "now" | date: "%Y.%m.%d" | prepend: "Last updated: " | upcase}}</h1>
+    <h1>{{ "now" | date: "%Y.%m.%d" | prepend: "Last updated: " | upcase }}</h1>
     <h3>{% render "partials/test.liquid", test: "f" %}</h3>
 </body>
 </html>

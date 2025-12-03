@@ -1,13 +1,13 @@
-//Use the --a flag to build the entire site.
-//Otherwise, define an input and output directory.
-//(examples: --www --blog --more)
+/*Use the --a flag to build the entire site.
+  Otherwise, define an input and output directory.
+  (examples: --www --blog --more)*/
 
 const fs = require('fs'); //allows us to access the filesystem
 
 const inDir = './_src'; //look for code in the source folder
 const outDir = './_public'; //output built files to public folder
 
-const { exec, execSync } = require('child_process'); //allows us to run commands
+const { execSync } = require('child_process'); //allows us to run commands
 
 if (process.argv.length === 2) {
   console.log('\u001b[0;34mNo arguments defined.');
@@ -53,7 +53,6 @@ if (process.argv.length === 3 && process.argv[2] === "--a") {
 if (process.argv.length > 2 && !process.argv.includes("--a")) {
   //Start at 2 to ignore the first 2 arguments, node path and file path
   for (let i = 2; i < process.argv.length; i++) {
-    console.log(i + process.argv[i]);
     //skip if the argument isn't a flag
     if (!process.argv[i].startsWith("--")) {
       console.error("\u001b[41mSkipping argument: " + process.argv[i] + "\u001b[0m");
@@ -72,7 +71,7 @@ if (process.argv.length > 2 && !process.argv.includes("--a")) {
       console.error('\u001b[41mERROR: ' + input + ' is not a directory.\u001b[0m');
       continue;
     };
-    console.log("\u001b[46mCheck " + input + " dir is a valid directory.\u001b[0m");
+    console.log("\u001b[46mOK: " + input + " dir is a valid directory.\u001b[0m");
     let output = outDir + "/" + flagDir;
     execSync(`npx eleventy --input=${input} --output=${output}`);
     console.log(`\u001b[42mBuilt ${flagDir} ==> output to ${output}\u001b[0m`);
